@@ -15,12 +15,3 @@ services:
       MYSQL_PASSWORD: test
     volumes:
       - ~/Dev/mysql:/var/lib/mysql
-      
-
-  adminer:
-    image: adminer
-    restart: always
-    depends_on: 
-      - db
-    ports:
-      - 8090:8080

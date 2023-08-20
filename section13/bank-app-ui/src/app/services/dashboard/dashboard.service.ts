@@ -10,32 +10,32 @@ import { Contact } from '../../model/contact.model';
 })
 export class DashboardService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http:HttpClient) { }
 
-  getAccountDetails(id: number) {
-    return this.http.get(environment.rooturl + AppConstants.ACCOUNT_API_URL + "?id=" + id, { observe: 'response', withCredentials: true });
+  getAccountDetails(email: String){
+    return this.http.get(environment.rooturl + AppConstants.ACCOUNT_API_URL + "?email="+email,{ observe: 'response',withCredentials: true });
   }
 
-  getAccountTransactions(id: number) {
-    return this.http.get(environment.rooturl + AppConstants.BALANCE_API_URL + "?id=" + id, { observe: 'response', withCredentials: true });
+  getAccountTransactions(email: String){
+    return this.http.get(environment.rooturl + AppConstants.BALANCE_API_URL+ "?email="+email,{ observe: 'response',withCredentials: true });
   }
 
-  getLoansDetails(id: number) {
-    return this.http.get(environment.rooturl + AppConstants.LOANS_API_URL + "?id=" + id, { observe: 'response', withCredentials: true });
+  getLoansDetails(email: String){
+    return this.http.get(environment.rooturl + AppConstants.LOANS_API_URL+ "?email="+email,{ observe: 'response',withCredentials: true });
   }
 
-  getCardsDetails(id: number) {
-    return this.http.get(environment.rooturl + AppConstants.CARDS_API_URL + "?id=" + id, { observe: 'response', withCredentials: true });
+  getCardsDetails(email: String){
+    return this.http.get(environment.rooturl + AppConstants.CARDS_API_URL+ "?email="+email,{ observe: 'response',withCredentials: true });
   }
 
-  getNoticeDetails() {
-    return this.http.get(environment.rooturl + AppConstants.NOTICES_API_URL, { observe: 'response' });
+  getNoticeDetails(){
+    return this.http.get(environment.rooturl + AppConstants.NOTICES_API_URL,{ observe: 'response' });
   }
 
-  saveMessage(contact: Contact) {
-    const contacts = new Array();
+  saveMessage(contact : Contact){
+    var contacts = [];
     contacts.push(contact);
-    return this.http.post(environment.rooturl + AppConstants.CONTACT_API_URL, contacts, { observe: 'response' });
+    return this.http.post(environment.rooturl + AppConstants.CONTACT_API_URL,contacts,{ observe: 'response'});
   }
 
 }
